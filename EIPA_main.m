@@ -27,7 +27,7 @@ for row = 1:ny
         nyp = (row+1) + (col-1)*ny;
         
         % Note: Note sure if this is correct, but its my best attempt, that
-        % seems to "work"... no additional 
+        % seems to "work"... no further time to work on it for now
         %----------------------------------
         
         % Setup G matrix (equations to use on mapped field), based on FDM
@@ -35,11 +35,11 @@ for row = 1:ny
         if row == 1 | row == ny | col == 1 | col == nx
             G(n,n) = 1;
         else % from FDM
-            G(n,n) = -4; % Central point
-            G(n,nxp) = 1; % col + 1
-            G(n,nxm) = 1; % col - 1
-            G(n,nyp) = 1; % row + 1
-            G(n,nym) = 1; % row - 1  
+            G(n,n) = -4; % Central point, -4 is coefficient with delX = delY = 1
+            G(n,nxp) = 1; % col + 1, 1 is coefficient with delX = delY = 1
+            G(n,nxm) = 1; % col - 1, 1 is coefficient with delX = delY = 1
+            G(n,nyp) = 1; % row + 1, 1 is coefficient with delX = delY = 1
+            G(n,nym) = 1; % row - 1, 1 is coefficient with delX = delY = 1
         end
         
         % Change the material / make the wave propagate faster/slower
